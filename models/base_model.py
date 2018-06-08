@@ -29,8 +29,8 @@ class BaseModel():
 
     def save(self):
         'updates the public instance attributed updated_at w/ current time'
-        storage.save(self) #whats the right order of these two lines
         self.updated_at=datetime.datetime.now()
+        storage.save(self) #whats the right order of these two lines
 
 
     def to_dict(self):
