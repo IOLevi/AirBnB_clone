@@ -14,7 +14,7 @@ class FileStorage():
 
     def new(self, obj):
         'adds an obj into the __objects dictionary'
-        self.__objects.update("{}.{}".format(obj.__class__.__name__, obj.id), obj) 
+        self.__objects.update({"{}.{}".format(obj.__class__.__name__, obj.id): obj.to_dict()}) 
 
     def save(self):
         'serializes __objects" to the JSON file (path: __file_path)'
