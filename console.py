@@ -94,15 +94,29 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
                 return False
         print("** no instance found **")
-        
-        
 
     def help_destroy(self):
         print("destroys an object by overwriting it from the json file")
 
-
-
-
+    def do_all(self, s):
+        """prints all objects"""
+        if s and s not in self.myclasses:
+            print("** class doesn't exist **")
+            return False
+        
+        bucket = storage.all()
+        if s: #if they specified a classname
+            for k in bucket:
+                if k.startswith(s):
+                    print(bucket[k])
+            return False
+        
+        for i in self.myclasses:#if no classname were specified, use everything in my self.myclasses class list
+            for k in bucket:
+                if k.startswith(i):
+                    print(bucket[k])
+        return False
+    
     do_EOF = do_exit
     help_EOF = help_exit
     prompt = "(hbnb)"
