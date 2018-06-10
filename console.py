@@ -66,6 +66,43 @@ class HBNBCommand(cmd.Cmd):
     def help_show(self):
         print("Prints the string representation of an instance based on the class name and id.")
 
+    def do_destroy(self, s):
+        """If the class name is missing, print ** class name missing ** (ex: $ destroy)
+        If the class name doesn’t exist, print ** class doesn't exist ** (ex:$ destroy MyModel)
+        If the id is missing, print ** instance id missing ** (ex: $ destroy BaseModel)
+        If the instance of the class name doesn’t exist for the id, print ** no instance found ** (ex: $ destroy BaseModel 121212)"""
+        if len(s) < 1:
+            print("** class name missing **")
+            return False
+
+        cname = s.split()[0]
+        if cname not in self.myclasses:        
+            print("** class doesn't exist **")
+            return False
+
+        try:
+            cid = s.split()[1]
+        except BaseException:
+            print("** instance id missing **")
+            return False
+        
+        bucket = storage.all()
+
+        for k in bucket:
+            if k == "{}.{}".format(cname, cid):
+                bucket.pop(k)
+                storage.save()
+                return False
+        print("** no instance found **")
+        
+        
+
+    def help_destroy(self):
+        print("destroys an object by overwriting it from the json file")
+
+
+
+
     do_EOF = do_exit
     help_EOF = help_exit
     prompt = "(hbnb)"
