@@ -117,6 +117,55 @@ class HBNBCommand(cmd.Cmd):
                     print(bucket[k])
         return False
     
+    def help_all(self):
+        print("all [<class name>] -> prints all instances of every class if no argument is specified; otherwise all the instances of specified class")
+    
+    def do_update(self, s):
+        if len(s) < 1:
+            print("** class name missing **")
+            return False
+
+        cname = s.split()[0]
+        if cname not in self.myclasses:        
+            print("** class doesn't exist **")
+            return False
+
+        try:
+            cid = s.split()[1]
+        except BaseException:
+            print("** instance id missing **")
+            return False
+        
+        try:
+            cattrname = s.split()[2]
+        except BaseException:
+            print("** attribute name missing **")
+            return False
+        
+        try:
+            cattrvalue = s.split()[3]
+        except BaseException:
+            print("** value missing **")
+            return False
+
+        bucket = storage.all()
+
+        #need to cast attribute name to attribute value
+        try:
+            target = bucket["{}.{}".format(cname, cid)]
+        except KeyError:
+            print("** no instance found **")
+            return False
+        # could just check if "." in cattrvalue and if so cast float else cast int if alphanumeric else pass as string
+
+        setattr(target, cattrname, cattrvalue if not cattrvalue.isdecimal() else float(cattrvalue) if "." in cattrvalue else int(cattrvalue))#how to dynamically know the value of an atttribute...then cast... type it?
+        
+
+        
+
+
+
+
     do_EOF = do_exit
     help_EOF = help_exit
     prompt = "(hbnb)"
