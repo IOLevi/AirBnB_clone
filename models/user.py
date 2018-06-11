@@ -10,5 +10,5 @@ class User(BaseModel):
     last_name = ""
 
     def __init__(self, *args, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs) #should i pass through kwargs here
         

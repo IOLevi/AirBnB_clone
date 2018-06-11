@@ -35,7 +35,13 @@ class FileStorage():
                     # m = __import__("models.base_model")
                     # TargetClass = getattr(m, v["__class__"]) #investigate reflection http://www.diveintopython.net/power_of_introspection/getattr.html
                     from ..base_model import BaseModel
+                    from ..state import State
                     from ..user import User
+                    from ..city import City
+                    from ..amenity import Amenity
+                    from ..place import Place
+                    from ..review import Review
+                    
                     reloadedobj = eval("{}(**v)".format(v["__class__"])) #is there a way to use the v["_class__"] to get classname dynamically
                     self.new(reloadedobj)
                 
