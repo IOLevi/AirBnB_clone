@@ -158,8 +158,13 @@ class HBNBCommand(cmd.Cmd):
             return False
         # could just check if "." in cattrvalue and if so cast float else cast int if alphanumeric else pass as string
 
-        setattr(target, cattrname, cattrvalue if not cattrvalue.isdecimal() else float(cattrvalue) if "." in cattrvalue else int(cattrvalue))#how to dynamically know the value of an atttribute...then cast... type it?
-        
+        try:
+            setattr(target, cattrname, float(cattrvalue) if not cattrvalue.isdecimal() else int(cattrvalue))#how to dynamically know the value of an atttribute...then cast... type it?
+            storage.save()
+        except ValueError:
+            setattr(target, cattrname, cattrvalue)
+            storage.save()
+        #isdecimal doesn't return true for float numbers
 
         
 
