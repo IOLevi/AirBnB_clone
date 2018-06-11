@@ -3,6 +3,7 @@
 
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models.engine.file_storage import FileStorage
 from models import storage
 
@@ -33,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return False
         
-        created = BaseModel()
+        created = eval("{}()".format(s)) #changed this
         created.save()
         print(created.id)
 
@@ -161,10 +162,16 @@ class HBNBCommand(cmd.Cmd):
         try:
             setattr(target, cattrname, float(cattrvalue) if not cattrvalue.isdecimal() else int(cattrvalue))#how to dynamically know the value of an atttribute...then cast... type it?
             storage.save()
-        except ValueError:
+        except ValueError:#wrote it this way if the float("alphastring" fails)
             setattr(target, cattrname, cattrvalue)
             storage.save()
+        
+    
+    def help_update(self):
+        print("update <classname> <classid> <attrname> <attrvalue: (int, float, str)>")
         #isdecimal doesn't return true for float numbers
+
+        #ENOTE: need to test for a "update BModel 343243 cattrname "a spaced value"""
 
         
 
@@ -174,7 +181,7 @@ class HBNBCommand(cmd.Cmd):
     do_EOF = do_exit
     help_EOF = help_exit
     prompt = "(hbnb)"
-    myclasses = ["BaseModel"]
+    myclasses = ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"] #expand this list when you add new classes
 
 
 if __name__ == "__main__":

@@ -30,7 +30,7 @@ class BaseModel():
     self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
-        'updates the public instance attributed updated_at w/ current time'
+        'saves the instance to a .json file via FileStorage'
         self.updated_at=datetime.datetime.now()
         storage.new(self)
         storage.save() #whats the right order of these two lines
