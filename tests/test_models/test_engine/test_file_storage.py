@@ -2,20 +2,20 @@
 
 import unittest
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
-from models.engine.state import State
-from models.engine.user import User
-from models.engine.city import City
-from models.engine.amenity import Amenity
-from models.engine.place import Place
-from models.engine.review import Review
+from models.file_storage import FileStorage
+from models.state import State
+from models.user import User
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 import datetime
 import pep8
 import os
 import json
 
-class TestFileStorage(unittest.TestCase)
-    "test class for baseMoldel"
+class TestFileStorage(unittest.TestCase):
+    "test class for baseModel"
     def setUp(self):
         "setup"
         pass
@@ -85,5 +85,5 @@ class TestFileStorage(unittest.TestCase)
                     self.assertTrue(k in d.__dict__)
                     self.assertEqual(d.__dict__[k], b.__dict__[k])
 
-    if __name__ = "__main__"
+    if __name__ == "__main__":
         unittest.main()

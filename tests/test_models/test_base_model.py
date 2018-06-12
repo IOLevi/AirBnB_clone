@@ -6,7 +6,7 @@ import datetime
 import pep8
 import os
 
-class TestBaseModel(unittest.TestCase)
+class TestBaseModel(unittest.TestCase):
     "test class for baseMoldel"
     def setUp(self):
         "setup"
@@ -51,10 +51,10 @@ class TestBaseModel(unittest.TestCase)
         b = BaseModel()
         self.assertEqual(type(a.id), str)
         self.assertNotEqual(a.id, b.id)
-        self.assertEqual(type(a.created_at), datetime.datetime))
+        self.assertEqual(type(a.created_at), datetime.datetime)
         self.assertEqual(type(a.updated_at), datetime.datetime)
         
-    if __name__ = "__main__"
+    if __name__ == "__main__":
         unittest.main()
 
     
