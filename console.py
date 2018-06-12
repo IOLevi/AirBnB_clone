@@ -15,15 +15,17 @@ from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
+    
+    myclasses = ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"] #expand this list when you add new classes
 
     def emptyline(self):
         'empty lines will not repeat last command'
         pass
 
-    def do_exit(self, s):
+    def do_quit(self, s):
         return True
 
-    def help_exit(self):
+    def help_quit(self):
         print("Exit the interpreter.")
         print("You can also use CTRL-D (EOF) to exit")
 
@@ -38,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
         if s not in self.myclasses:
             print("** class doesn't exist **")
             return False
-        
+
         created = eval("{}()".format(s)) #changed this
         created.save()
         print(created.id)
@@ -62,7 +64,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return False
 
-        bucket = storage.all()
+        bucket = storage.all() #a dictionary which includes every obj in storage
         for k in bucket:
             if k == "{}.{}".format(cname, cid):
                 print(bucket[k])
@@ -92,12 +94,12 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return False
         
-        bucket = storage.all()
+        bucket = storage.all() #__objects from the FileStorage
 
         for k in bucket:
             if k == "{}.{}".format(cname, cid):
-                bucket.pop(k)
-                storage.save()
+                bucket.pop(k) #removes it from __objects in storage
+                storage.save() #rewrites the json file
                 return False
         print("** no instance found **")
 
@@ -178,16 +180,9 @@ class HBNBCommand(cmd.Cmd):
 
         #ENOTE: need to test for a "update BModel 343243 cattrname "a spaced value"""
 
-        
-
-
-
-
-    do_EOF = do_exit
-    help_EOF = help_exit
+    do_EOF = do_quit
+    help_EOF = help_quit
     prompt = "(hbnb)"
-    myclasses = ["BaseModel", "User", "Place", "State", "City", "Amenity", "Review"] #expand this list when you add new classes
-
 
 if __name__ == "__main__":
     interpreter = HBNBCommand()
