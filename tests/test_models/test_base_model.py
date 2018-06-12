@@ -18,11 +18,11 @@ class TestBaseModel(unittest.TestCase):
     
     def test_docstring(self):
         "tests the docstring"
-        self.assertTrue(len(Basemodel.__doc__) > 1)
-        self.assertTrue(len(Basemodel.__init__.__doc__) > 1)
-        self.assertTrue(len(Basemodel.__str__.__doc__) > 1)
-        self.assertTrue(len(Basemodel.save.__doc__) > 1)
-        self.assertTrue(len(Basemodel.to_dict.__doc__) > 1)
+        self.assertTrue(len(BaseModel.__doc__) > 1)
+        self.assertTrue(len(BaseModel.__init__.__doc__) > 1)
+        self.assertTrue(len(BaseModel.__str__.__doc__) > 1)
+        self.assertTrue(len(BaseModel.save.__doc__) > 1)
+        self.assertTrue(len(BaseModel.to_dict.__doc__) > 1)
         
     def test_pep8(self):
         "tests pep8"
@@ -34,7 +34,7 @@ class TestBaseModel(unittest.TestCase):
         "make sure args are not used"
         a = BaseModel(12)
         self.assertEqual(type(a).__name__, "BaseModel")
-        self.assertFalse(hasattr(a, 12))
+        self.assertFalse(hasattr(a, "12"))
     
     def test_init_kwargs_correct(self):
         "make sure kwargs are used correctly"

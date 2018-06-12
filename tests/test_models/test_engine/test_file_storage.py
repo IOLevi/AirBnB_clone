@@ -2,7 +2,7 @@
 
 import unittest
 from models.base_model import BaseModel
-from models.file_storage import FileStorage
+from models.engine.file_storage import FileStorage
 from models.state import State
 from models.user import User
 from models.city import City
@@ -29,11 +29,11 @@ class TestFileStorage(unittest.TestCase):
     
     def test_docstring(self):
         "tests the docstring"
-        self.assertTrue(len(Basemodel.__doc__) > 1)
-        self.assertTrue(len(Basemodel.__init__.__doc__) > 1)
-        self.assertTrue(len(Basemodel.__str__.__doc__) > 1)
-        self.assertTrue(len(Basemodel.save.__doc__) > 1)
-        self.assertTrue(len(Basemodel.to_dict.__doc__) > 1)
+        self.assertTrue(len(BaseModel.__doc__) > 1)
+        self.assertTrue(len(BaseModel.__init__.__doc__) > 1)
+        self.assertTrue(len(BaseModel.__str__.__doc__) > 1)
+        self.assertTrue(len(BaseModel.save.__doc__) > 1)
+        self.assertTrue(len(BaseModel.to_dict.__doc__) > 1)
         
     def test_pep8(self):
         "tests pep8"
@@ -44,7 +44,7 @@ class TestFileStorage(unittest.TestCase):
     def test_basic_attrs(self):
         "testing basic attributes"
         a = FileStorage()
-        self.assertTrue(hasattr(a, __objects))
+        self.assertTrue(hasattr(a, "__objects"))
         b = a.all()
         self.assertEqual(type(b), dict)
         self.assertTrue(hasattr(a, __file_path))
@@ -76,7 +76,7 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", encoding="utf-8") as e:
             c = json.load(e)
             self.assertEqual(type(c), dict)
-            for k, v in c:
+            for k, v in c.items():
                 self.assertTrue("__class__" in v)
                 self.assertEqual(type(v), dict)
                 self.assertTrue(len(v) > 0)
