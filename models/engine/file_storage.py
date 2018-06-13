@@ -3,10 +3,11 @@
 
 import json
 
+
 class FileStorage():
     'file storage class'
-    __file_path = "file.json" #path to json file
-    __objects = dict() #stores objects by <classname>.id:obj
+    __file_path = "file.json"  # path to json file
+    __objects = dict()  # stores objects by <classname>.id:obj
 
     def all(self):
         'returns dictionary __objects'
@@ -14,7 +15,8 @@ class FileStorage():
 
     def new(self, obj):
         'adds an obj into the __objects dictionary'
-        self.__objects.update({"{}.{}".format(obj.__class__.__name__, obj.id): obj}) 
+        self.__objects.update(
+            {"{}.{}".format(obj.__class__.__name__, obj.id): obj})
 
     def save(self):
         'serializes __objects" to the JSON file (path: __file_path)'
@@ -22,7 +24,7 @@ class FileStorage():
             dictwriter = dict()
 
             for k, v in self.__objects.items():
-                dictwriter.update({k:v.to_dict()})
+                dictwriter.update({k: v.to_dict()})
             myFile.write(json.dumps(dictwriter))
 
     def reload(self):
@@ -41,11 +43,10 @@ class FileStorage():
                     from ..amenity import Amenity
                     from ..place import Place
                     from ..review import Review
-                    
-                    reloadedobj = eval("{}(**v)".format(v["__class__"])) #is there a way to use the v["_class__"] to get classname dynamically
-                    self.new(reloadedobj)
-                
-        except FileNotFoundError:
-            pass #do nothing when there is no file
 
-    
+                    # is there a way to use the v["_class__"] to get classname dynamically
+                    reloadedobj = eval("{}(**v)".format(v["__class__"]))
+                    self.new(reloadedobj)
+
+        except FileNotFoundError:
+            pass  # do nothing when there is no file

@@ -44,12 +44,12 @@ class TestFileStorage(unittest.TestCase):
     def test_basic_attrs(self):
         "testing basic attributes"
         a = FileStorage()
-        self.assertTrue(hasattr(a, "__objects"))
+        self.assertTrue("_FileStorage__objects" in dir(a))
         b = a.all()
         self.assertEqual(type(b), dict)
-        self.assertTrue(hasattr(a, __file_path))
-        self.assertEqual(type(a.__dict__["_FileStorage__file_path"], str))
-        self.assertTrue(len(a.__dict__["_FileStorage__file_path"] > 1))
+        self.assertTrue("_FileStorage__file_path" in dir(a))
+        self.assertEqual(type(a._FileStorage__file_path), str)
+        self.assertTrue(len(a._FileStorage__file_path) > 1)
 
     def test_new_method(self):
         "tests the new method"

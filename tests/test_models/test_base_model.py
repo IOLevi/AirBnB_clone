@@ -6,16 +6,18 @@ import datetime
 import pep8
 import os
 
+
 class TestBaseModel(unittest.TestCase):
     "test class for baseMoldel"
+
     def setUp(self):
         "setup"
         pass
-    
+
     def tearDown(self):
         "teardown"
         pass
-    
+
     def test_docstring(self):
         "tests the docstring"
         self.assertTrue(len(BaseModel.__doc__) > 1)
@@ -23,7 +25,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(len(BaseModel.__str__.__doc__) > 1)
         self.assertTrue(len(BaseModel.save.__doc__) > 1)
         self.assertTrue(len(BaseModel.to_dict.__doc__) > 1)
-        
+
     def test_pep8(self):
         "tests pep8"
         style = pep8.StyleGuide(quiet=True)
@@ -35,7 +37,7 @@ class TestBaseModel(unittest.TestCase):
         a = BaseModel(12)
         self.assertEqual(type(a).__name__, "BaseModel")
         self.assertFalse(hasattr(a, "12"))
-    
+
     def test_init_kwargs_correct(self):
         "make sure kwargs are used correctly"
         v = {"b": 123}
@@ -53,8 +55,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(a.id, b.id)
         self.assertEqual(type(a.created_at), datetime.datetime)
         self.assertEqual(type(a.updated_at), datetime.datetime)
-        
+
     if __name__ == "__main__":
         unittest.main()
-
-    

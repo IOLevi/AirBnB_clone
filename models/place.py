@@ -2,6 +2,7 @@
 "place class module"
 from .base_model import BaseModel
 class Place(BaseModel):
+    "place class"
     city_id = ""
     user_id = ""
     name = ""
@@ -15,4 +16,5 @@ class Place(BaseModel):
     amenity_ids = [] 
 
     def __init__(self, *args, **kwargs):
+        "init method"
         super().__init__(**kwargs) 
