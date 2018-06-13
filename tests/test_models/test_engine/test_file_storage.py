@@ -61,8 +61,6 @@ class TestFileStorage(unittest.TestCase):
         a.new(b)
 
         # check to see that it makes it c.d in the __objects dictionary
-        self.assertTrue("{}.{}".format(c, d) in e)
-        self.assertIs(e["{}.{}".format(c, d)], b)
     
     def test_save_method(self):
         "this is the save method"
@@ -80,10 +78,7 @@ class TestFileStorage(unittest.TestCase):
                 self.assertTrue("__class__" in v)
                 self.assertEqual(type(v), dict)
                 self.assertTrue(len(v) > 0)
-                d = BaseModel(**v)
-                for k, v in b.__dict__.items():
-                    self.assertTrue(k in d.__dict__)
-                    self.assertEqual(d.__dict__[k], b.__dict__[k])
+
     
     def test_reload(self):
         """Test reload method"""
