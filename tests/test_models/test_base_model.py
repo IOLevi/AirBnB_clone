@@ -55,6 +55,14 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(a.id, b.id)
         self.assertEqual(type(a.created_at), datetime.datetime)
         self.assertEqual(type(a.updated_at), datetime.datetime)
+    
+    def test_has_attrs(self):
+        """normal startup"""
+        b2 = BaseModel()
+        self.assertTrue(hasattr(b2, "__init__"))
+        self.assertTrue(hasattr(b2, "created_at"))
+        self.assertTrue(hasattr(b2, "updated_at"))
+        self.assertTrue(hasattr(b2, "id"))
 
     if __name__ == "__main__":
         unittest.main()

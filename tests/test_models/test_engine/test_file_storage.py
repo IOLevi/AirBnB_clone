@@ -84,6 +84,16 @@ class TestFileStorage(unittest.TestCase):
                 for k, v in b.__dict__.items():
                     self.assertTrue(k in d.__dict__)
                     self.assertEqual(d.__dict__[k], b.__dict__[k])
+    
+    def test_reload(self):
+        """Test reload method"""
+        a = FileStorage()
+        with open("file.json", "w") as f:
+            f.write("{}")
+        with open("file.json", "r") as h:
+            for arg in h:
+                self.assertEqual(arg, "{}")
+        self.assertIs(a.reload(), None)
 
     if __name__ == "__main__":
         unittest.main()
