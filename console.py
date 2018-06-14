@@ -171,7 +171,8 @@ class HBNBCommand(cmd.Cmd):
         except KeyError:
             print("** no instance found **")
             return False
-        # could just check if "." in cattrvalue and if so cast float else cast int if alphanumeric else pass as string
+        # could just check if "." in cattrvalue and if so cast float else cast
+        # int if alphanumeric else pass as string
 
         try:
             setattr(target, cattrname, float(cattrvalue) if not cattrvalue.isdecimal() else int(
@@ -187,11 +188,12 @@ class HBNBCommand(cmd.Cmd):
         print("update <classname> <classid> <attrname> <attrvalue: (int, float, str)>")
         # isdecimal doesn't return true for float numbers
 
-        # ENOTE: need to test for a "update BModel 343243 cattrname "a spaced value"""
+        # ENOTE: need to test for a "update BModel 343243 cattrname "a spaced
+        # value"""
 
     do_EOF = do_quit
     help_EOF = help_quit
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
 
 if __name__ == "__main__":
