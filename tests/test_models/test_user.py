@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"City test module"
+"User test module"
 import unittest
 from models.base_model import BaseModel
 from models.user import User
