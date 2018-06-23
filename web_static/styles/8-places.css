@@ -1,7 +1,8 @@
-
 .places h1 {
     font-size: 30px;
     text-align: left;
+    padding-left: 15px;
+    margin-bottom: 0;
 }
 
 .places article {
@@ -10,20 +11,22 @@
     margin: 20px;
     border: #FF5A5F 1px solid;
     border-radius: 4px;
-    float:left;
+    /* text-align: center; */
+    float: left;
+    min-height: 60%;
+    position: relative;
+    left: 30px;
 }
 
 .places article h2 {
     font-size: 30px;
     text-align: center;
-    display: inline-block;
-    
+    /* display: inline-block; */
 
+    
 }
 
 /* adding below this line from 7... */
-
-
 .places article .price_by_night {
     color: #FF5A5F;
     border: #FF5A5F 4px solid;
@@ -35,6 +38,9 @@
     float:right;
     line-height: 2.0em;
     /* needs to align top right */
+    position: absolute;
+    right: 0;
+    top: -20px;;
 }
 
 .places article .information {
@@ -44,26 +50,57 @@
     border-bottom: #dddddd 1px solid;
 }
 
+.max_guest div, .number_rooms div, .number_bathrooms div {
+    position: absolute;
+    bottom: 0;
+    padding-left: 17px;
+    padding-bottom: 1%;
+}
+
 .information .max_guest {
     width: 100px; 
     background-image: url("../images/icon_group.png");
-    background-color: #FF5A5F;
     background-repeat: no-repeat;
-    float:left;
+    /* float:left; */
+    display: inline-block;
+    vertical-align: text-bottom;
+    height: 100%;
+    position: relative;
+    background-position: center;
 }
 .information .number_rooms {
     width: 100px;
     background-image: url("../images/icon_bed.png");
     background-repeat: no-repeat;
-    float:left;
+    /* float:left; */
+    vertical-align: text-bottom;
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    background-position: center;
 }
+
 .information .number_bathrooms {
     width: 100px;
     background-image: url("../images/icon_bath.png");
     background-repeat: no-repeat;
-    float:left;
+    /* float:left; */
+    vertical-align: text-bottom;
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    background-position: center;
 }
 
 .user, .description {
     text-align: left;
+}
+
+.user {
+    margin-top: 4%;
+    line-height: 2em;
+}
+
+.nameprice {
+    position: relative;
 }

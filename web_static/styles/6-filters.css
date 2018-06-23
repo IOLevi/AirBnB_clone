@@ -67,6 +67,7 @@
     padding-left: 10%;
     width: 91%;
     display: none;
+    z-index: 1;
 }
 
 /* think about clearing floats */
