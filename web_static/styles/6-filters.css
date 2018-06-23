@@ -5,6 +5,7 @@
     border: solid 1px #DDDDDD;
     border-radius: 4px;
     position: relative;
+    text-align: left;
     /*not sure mebe remove*/
 }
 
@@ -42,13 +43,13 @@
 
 .filters h3 {
     font-weight: 600;
-    margin-left: 10%;
+    margin-left: 15%;
 }
 
 .filters h4 {
     font-weight: 400;
     font-size: 14px;
-    margin-left: 10%;
+    margin-left: 15%;
     position: relative;
     bottom: 10px;
 }
@@ -92,7 +93,7 @@
 div.locations:hover ul.popover {
     display: block;
 }
-
+/* could combine the two rules with a comma */
 div.amenities:hover ul.popover {
     display: block;
 }

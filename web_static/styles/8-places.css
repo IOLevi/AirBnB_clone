@@ -1,6 +1,7 @@
 
 .places h1 {
     font-size: 30px;
+    text-align: left;
 }
 
 .places article {
@@ -16,6 +17,7 @@
     font-size: 30px;
     text-align: center;
     display: inline-block;
+    
 
 }
 
@@ -25,17 +27,19 @@
 .places article .price_by_night {
     color: #FF5A5F;
     border: #FF5A5F 4px solid;
-    height: 25px;
     min-width: 60px;
     height: 60px;
     font-size: 30px;
     border-radius: 50%;
-    display: inline-block;
+    /* display: inline-block; */
+    float:right;
+    line-height: 2.0em;
     /* needs to align top right */
 }
 
 .places article .information {
     height: 80px;
+    width: 100%; /*not sure */
     border-top: #dddddd 1px solid;
     border-bottom: #dddddd 1px solid;
 }
@@ -43,23 +47,23 @@
 .information .max_guest {
     width: 100px; 
     background-image: url("../images/icon_group.png");
+    background-color: #FF5A5F;
     background-repeat: no-repeat;
     float:left;
-
 }
 .information .number_rooms {
     width: 100px;
     background-image: url("../images/icon_bed.png");
     background-repeat: no-repeat;
     float:left;
-
-
 }
 .information .number_bathrooms {
     width: 100px;
     background-image: url("../images/icon_bath.png");
     background-repeat: no-repeat;
     float:left;
+}
 
-
+.user, .description {
+    text-align: left;
 }
