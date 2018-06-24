@@ -21,8 +21,8 @@
     font-size: 30px;
     text-align: center;
     /* display: inline-block; */
-
-    
+    position: relative;
+    bottom: 15px;   
 }
 
 /* adding below this line from 7... */
@@ -39,7 +39,8 @@
     /* needs to align top right */
     position: absolute;
     right: 0;
-    top: -20px;;
+    top: -28px;
+    padding: 4px;
 }
 
 .places article .information {
@@ -47,13 +48,15 @@
     width: 100%; /*not sure */
     border-top: #dddddd 1px solid;
     border-bottom: #dddddd 1px solid;
+    padding-bottom: 8px;
 }
 
 .max_guest div, .number_rooms div, .number_bathrooms div {
     position: absolute;
     bottom: 0;
     padding-left: 17px;
-    padding-bottom: 1%;
+    padding-bottom: 7%;
+    line-height: 0em;
 }
 
 .information .max_guest {
@@ -105,6 +108,7 @@
 }
 
 .test {
+    /* creates space between the first two articles */
     display: inline-block;
     width: 20px;
 }
